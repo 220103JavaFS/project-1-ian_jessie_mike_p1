@@ -6,11 +6,14 @@ import java.util.List;
 
 public interface IUsers_DAO {
 
+    //Admin functionality
     List<Users> selectAllUsers();
 
+    //Admin functionality
     List<Users> selectUsersByUsername(String username);
 
-    List<Users> selectUsersByRoleID(Users users);
+
+    //List<Users> selectUsersByRoleID(Users users);
 
     Users selectUserByID(int id);
 
@@ -18,7 +21,6 @@ public interface IUsers_DAO {
 
     boolean update(Users Users);
 
-    boolean delete(Users Users);
-
+    //boolean delete(Users Users);
 
 }

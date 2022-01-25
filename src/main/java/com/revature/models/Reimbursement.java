@@ -17,6 +17,22 @@ public class Reimbursement {
     private Integer status_ID;
     private Integer type_ID;
 
+    public Reimbursement() {
+    }
+
+    public Reimbursement(Integer reimbursement_ID, Float reimbursement_Amount, Timestamp time_Submitted, Timestamp time_Resolved, String description, byte[] reciept, Integer author_ID, Integer resolver_ID, Integer status_ID, Integer type_ID) {
+        this.reimbursement_ID = reimbursement_ID;
+        this.reimbursement_Amount = reimbursement_Amount;
+        this.time_Submitted = time_Submitted;
+        this.time_Resolved = time_Resolved;
+        this.description = description;
+        this.reciept = reciept;
+        this.author_ID = author_ID;
+        this.resolver_ID = resolver_ID;
+        this.status_ID = status_ID;
+        this.type_ID = type_ID;
+    }
+
     public Integer getReimbursement_ID() {
         return reimbursement_ID;
     }
