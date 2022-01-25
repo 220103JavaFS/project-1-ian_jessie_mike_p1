@@ -13,5 +13,4 @@ public interface IReimbursement_Type_DAO {
 
     boolean updateReimbursementType(Reimbursement_Type reimbursement_type);
 
-    boolean deleteReimbursementType(Reimbursement_Type teimbursement_type);
 }
