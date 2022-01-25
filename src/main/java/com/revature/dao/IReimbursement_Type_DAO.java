@@ -7,10 +7,11 @@ import java.util.List;
 public interface IReimbursement_Type_DAO {
     Reimbursement_Type selectReimbursementTypeByID(int id);
 
-    List<Reimbursement_Type> selectAllReimbursementType();
+//    List<Reimbursement_Type> selectAllReimbursementType();
 
     boolean insertReimbursementType(Reimbursement_Type reimbursement_type);
-
-    boolean updateReimbursementType(Reimbursement_Type reimbursement_type);
-
+//
+//    boolean updateReimbursementType(Reimbursement_Type reimbursement_type);
+//
+//    boolean deleteReimbursementType(Reimbursement_Type teimbursement_type);
 }

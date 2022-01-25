@@ -12,6 +12,20 @@ public class Users {
     private String user_Email;
     private Integer user_Role_ID;
 
+    public Users() {
+    }
+
+    public Users(Integer user_ID, String user_Name, String user_Pass, String user_First_Name,
+                 String user_Last_Name, String user_Email, Integer user_Role_ID) {
+        this.user_ID = user_ID;
+        this.user_Name = user_Name;
+        this.user_Pass = user_Pass;
+        this.user_First_Name = user_First_Name;
+        this.user_Last_Name = user_Last_Name;
+        this.user_Email = user_Email;
+        this.user_Role_ID = user_Role_ID;
+    }
+
     public Integer getUser_ID() {
         return user_ID;
     }
