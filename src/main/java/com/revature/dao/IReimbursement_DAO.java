@@ -13,6 +13,8 @@ public interface IReimbursement_DAO {
 
     List<Reimbursement> select_Reimbursement_By_Resolver(Users users);
 
+    List<Reimbursement> select_Reimbursement_By_Status_ID(int status_ID);
+
     Reimbursement select_Reimbursement_By_ID(int id);
 
     boolean insert(Reimbursement reimbursement);
