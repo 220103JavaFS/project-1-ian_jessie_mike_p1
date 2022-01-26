@@ -11,7 +11,7 @@ public interface IReimbursement_DAO {
     List<Reimbursement> select_All_Reimbursements();
 
     //Admin view of all single users reimbursements
-    List<Reimbursement> select_All_Reimbursements_By_Author_ID(int id);
+    List<Reimbursement> select_All_Reimbursements_By_Author_ID(Integer id);
 
     //Filter by status
     List<Reimbursement> select_All_Reimbursement_By_Status_ID(int status_ID);
