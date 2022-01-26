@@ -8,12 +8,14 @@ public interface IReimbursement_Status_DAO {
 
     Reimbursement_Status selectReimbursementStatusByID(int id);
 
-    List<Reimbursement_Status> selectAllReimbursementStatus();
+//    List<Reimbursement_Status> selectAllReimbursementStatus();
 
-    boolean insertReimbursementStatus(Reimbursement_Status reimbursement_status);
+//    boolean insertReimbursementStatus(Reimbursement_Status reimbursement_status);
 
-    boolean updateReimbursementStatus(Reimbursement_Status reimbursement_status);
+//    boolean updateReimbursementStatus(Reimbursement_Status reimbursement_status);
+
 
     //boolean deleteReimbursementStatus(Reimbursement_Status reimbursement_status);
+
 
 }

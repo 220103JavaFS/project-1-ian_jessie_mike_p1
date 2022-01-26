@@ -8,12 +8,14 @@ public interface IUser_Roles_DAO {
 
     User_Roles selectUserRoleByUserID(int id);
 
-    List<User_Roles> selectAllUserRolls();
+//    List<User_Roles> selectAllUserRolls();
 
     boolean insertUserRole(User_Roles user_roles);
 
-    boolean updateUserRole(User_Roles user_roles);
 
-    //boolean deleteUserRole(User_Roles user_roles);
+//    boolean updateUserRole(User_Roles user_roles);
+//
+//    boolean deleteUserRole(User_Roles user_roles);
+
 
 }
