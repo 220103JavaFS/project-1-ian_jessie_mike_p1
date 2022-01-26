@@ -9,9 +9,9 @@ public interface IReimbursement_DAO {
 
     List<Reimbursement> select_All_Reimbursements();
 
-    List<Reimbursement> select_Reimbursement_By_Author(Users users);
+    //List<Reimbursement> select_Reimbursement_By_Author(Users users);
 
-    List<Reimbursement> select_Reimbursement_By_Resolver(Users users);
+    //List<Reimbursement> select_Reimbursement_By_Resolver(Users users);
 
     List<Reimbursement> select_Reimbursement_By_Status_ID(int status_ID);
 
@@ -21,6 +21,6 @@ public interface IReimbursement_DAO {
 
     boolean update(Reimbursement reimbursement);
 
-    boolean delete(Reimbursement reimbursement);
+   // boolean delete(Reimbursement reimbursement);
 
 }
