@@ -20,7 +20,7 @@ public interface IReimbursement_DAO {
     //Filter by status
     List<Reimbursement> select_Reimbursement_By_Status_ID(int status_ID);
 
-    Reimbursement select_Reimbursement_By_ID(int id);
+    Reimbursement select_Reimbursement_By_ID(Integer id);
 
     //Add reimbursement request
     boolean insert(Reimbursement reimbursement);

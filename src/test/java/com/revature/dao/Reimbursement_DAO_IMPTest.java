@@ -19,7 +19,7 @@ public class Reimbursement_DAO_IMPTest {
 
 
     private static Reimbursement reimbursement = new Reimbursement(
-            1,3.50F, timestamp, timestamp2, "Practice Description", bytes,1,1,1,1);
+            1,3.50F, timestamp, timestamp2, "Practice Description", null,1,1,1,1);
 
     //Test general reimbursement creation
     @Test
@@ -38,5 +38,4 @@ public class Reimbursement_DAO_IMPTest {
     void selectReimbursement_By_ID(){
         assertEquals(reimbursement, reimbursementDAO.select_Reimbursement_By_ID(reimbursement.getReimbursement_ID()));
     }
-
 }
