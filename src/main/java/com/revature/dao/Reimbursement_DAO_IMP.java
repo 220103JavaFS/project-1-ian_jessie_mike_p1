@@ -6,9 +6,7 @@ import com.revature.utils.DB_Connector;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,8 +33,37 @@ public class Reimbursement_DAO_IMP implements IReimbursement_DAO{
     }
 
     @Override
-    public Reimbursement select_Reimbursement_By_ID(int id) {
-        return null;
+    public Reimbursement select_Reimbursement_By_ID(Integer id) {
+        Reimbursement reimbursement = null;
+
+        try{
+            Connection myConnect = DB_Connector.getConnection();
+            PreparedStatement ps = myConnect.prepareStatement(
+                    "SELECT reimbursement_amount, time_submitted, time_resolved, description, reciept, author_id, resolver_id, status_id, type_id from reimbursement where reimbursement_id = ?");
+            ps.setInt(1,id);
+            ResultSet queryResult = ps.executeQuery();
+            queryResult.next();
+                float amount = queryResult.getFloat("reimbursement_amount");
+                Timestamp timesubmitted = queryResult.getTimestamp("time_submitted");
+                Timestamp timeresolved = queryResult.getTimestamp("time_resolved");
+                String description = queryResult.getString("description");
+                byte[] reciept = queryResult.getBytes("reciept");
+                Integer authorID = queryResult.getInt("author_id");
+                Integer resolverID = queryResult.getInt("resolver_id");
+                Integer statusID = queryResult.getInt("status_id");
+                Integer typeID = queryResult.getInt("type_id");
+
+                reimbursement = new Reimbursement( id,amount, timesubmitted,timeresolved,description,
+                        reciept,authorID,resolverID,statusID, typeID);
+                return reimbursement;
+
+        }catch(SQLException e){
+            e.printStackTrace();
+
+        }
+
+        return reimbursement;
+
     }
 
     @Override
@@ -69,9 +96,38 @@ public class Reimbursement_DAO_IMP implements IReimbursement_DAO{
         return updated;
     }
 
-        @Override
+    @Override
     public boolean update(Reimbursement reimbursement) {
-        return false;
+
+            try{
+                Connection myConnect = DB_Connector.getConnection();
+                PreparedStatement ps = myConnect.prepareStatement(
+                        "UPDATE reimbursement set reimbursement_amount = ?, " +
+                                "time_submitted = ?, time_resolved = ?," +
+                                " description = ?, reciept = ?, author_id = ?," +
+                                " resolver_id = ?, status_id = ?, type_id = ?" +
+                                "where reimbursement_id = ?");
+
+                ps.setFloat(1, reimbursement.getReimbursement_Amount());
+                ps.setTimestamp(2, reimbursement.getTime_Submitted());
+                ps.setTimestamp(3, reimbursement.getTime_Resolved());
+                ps.setString(4, reimbursement.getDescription());
+                ps.setBytes(5, reimbursement.getReciept());
+                ps.setInt(6, reimbursement.getAuthor_ID());
+                ps.setInt(7, reimbursement.getResolver_ID());
+                ps.setInt(8, reimbursement.getStatus_ID());
+                ps.setInt(9, reimbursement.getType_ID());
+                ps.setInt(10, reimbursement.getReimbursement_ID());
+                ps.execute();
+
+                return true;
+
+            }catch(SQLException e){
+                e.printStackTrace();
+                System.out.println("Reimbursement update failed");
+            }
+
+            return false;
     }
 
 //    @Override
