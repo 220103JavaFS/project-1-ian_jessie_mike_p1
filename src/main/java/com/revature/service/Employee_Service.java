@@ -17,7 +17,7 @@ public class Employee_Service {
         ReimbursementDTO result = new ReimbursementDTO();
 
         result.setRequest(request.findReimbursement(id));
-        result.setStatus(requestStatus.findStatus(getStatus_ID.result.getStatus()));
+        result.setStatus(requestStatus.findStatus(getStatus_ID(result.getStatus())));
         result.setType(requestType.findType(getType_ID(result.getType())));
 
         return result;
