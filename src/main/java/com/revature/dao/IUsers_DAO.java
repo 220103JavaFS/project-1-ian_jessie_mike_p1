@@ -7,21 +7,20 @@ import java.util.List;
 public interface IUsers_DAO {
 
     //Admin functionality
-//    List<Users> selectAllUsers();
+    List<Users> selectAllUsers();
 
     //Admin functionality
-    Users selectUserByUsername(String username);
+    List<Users> selectUsersByUsername(String username);
+
+
+    //List<Users> selectUsersByRoleID(Users users);
 
     Users selectUserByID(int id);
 
-    //List<Users> selectUsersByRoleID(Users users);
-//
-//    Users selectUserByID(int id);
-//
-//    boolean insert(Users Users);
-//
-//    boolean update(Users Users);
-//
-//    //boolean delete(Users Users);
+    boolean insert(Users Users);
+
+    boolean update(Users Users);
+
+    //boolean delete(Users Users);
 
 }

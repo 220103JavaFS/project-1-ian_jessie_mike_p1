@@ -58,7 +58,7 @@ public class Reimbursement_DAO_IMP implements IReimbursement_DAO{
     }
 
     @Override
-    public List<Reimbursement> select_All_Reimbursements_By_Author_ID(int id) {
+    public List<Reimbursement> select_All_Reimbursements_By_Author_ID(Integer id) {
 
         List<Reimbursement> reimbursementList = new ArrayList<>();
 
