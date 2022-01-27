@@ -16,6 +16,7 @@ public class LoginService {
     private final IUsers_DAO user;
     private static final Logger loginLog = LoggerFactory.getLogger(LoginService.class);
 
+    public LoginService(IUsers_DAO user) {this.user = user; encryptor= new Encryptor();}
 
     public LoginService(){encryptor = new Encryptor(); user = new Users_DAO_IMP();}
 
@@ -28,12 +29,12 @@ public class LoginService {
         if(secureUser != null){
             String passCheck = encryptor.encoder(password);
             String securePassword = secureUser.getUser_Pass();
-
             //Check current hash against DB hash
             if(securePassword.equals(passCheck)){
                 loginLog.info("User " + secureUser.getUser_Name() + " has logged in successfully!");
                 return true;
             }else {
+                System.out.println("Password didnt match");
                 loginLog.info("User " + secureUser.getUser_Name() + " login has failed!");
                 return false;
             }

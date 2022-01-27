@@ -22,33 +22,33 @@ public class reimbursementDAOIMPTest {
 
     //Test general reimbursement creation
     @Test
-    void createReimbursement(){
+    void createReimbursementTest(){
         assertTrue(reimbursementDAO.insert(reimbursement));
     }
 
     //Test general reimbursement update
     @Test
-    void updateReimbursement(){
+    void updateReimbursementTest(){
         assertTrue(reimbursementDAO.update(reimbursement));
     }
 
     //Test general select reimbursement by id
     @Test
-    void select_Reimbursement_By_ID(){
+    void selectReimbursementByIDTest(){
         assertEquals(reimbursement, reimbursementDAO.select_Reimbursement_By_ID(reimbursement.getReimbursement_ID()));}
 
     @Test
-    void select_All_Reimbursements_By_Author_ID(){
+    void selectAllReimbursementsByAuthorIDTest(){
         assertNotEquals(null,reimbursementDAO.select_All_Reimbursements_By_Author_ID(reimbursement.getAuthor_ID()));
     }
 
     @Test
-    void select_All_Reimbursements(){
+    void selectAllReimbursementsTest(){
         assertNotEquals(null, reimbursementDAO.select_All_Reimbursements());
     }
 
     @Test
-    void select_All_Reimbursement_By_Status_ID(){
+    void selectAllReimbursementByStatusIDTest(){
         assertNotEquals(null, reimbursementDAO.select_All_Reimbursement_By_Status_ID(reimbursement.getStatus_ID()));
     }
 
