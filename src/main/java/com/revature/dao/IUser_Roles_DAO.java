@@ -10,7 +10,7 @@ public interface IUser_Roles_DAO {
 
 //    List<User_Roles> selectAllUserRolls();
 
-    boolean insertUserRole(User_Roles user_roles);
+//    boolean insertUserRole(User_Roles user_roles);
 
 //    boolean updateUserRole(User_Roles user_roles);
 //
