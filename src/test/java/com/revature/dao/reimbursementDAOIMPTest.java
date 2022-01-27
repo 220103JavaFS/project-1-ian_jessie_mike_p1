@@ -1,12 +1,11 @@
 package com.revature.dao;
 
 import com.revature.models.Reimbursement;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.sql.Timestamp;
 
-public class Reimbursement_DAO_IMPTest {
+public class reimbursementDAOIMPTest {
 
 
     private static String resolveTime="2018-09-01 09:01:15";
