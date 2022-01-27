@@ -23,9 +23,6 @@ public class Users_DAO_IMP implements IUsers_DAO{
 
     @Override
     public Users selectUserByUsername(String username) {
-
-        Users user = null;
-
         try (Connection myConnect = DB_Connector.getConnection()){
             String sql = "SELECT * FROM users where user_name = ?;";
 
@@ -35,17 +32,17 @@ public class Users_DAO_IMP implements IUsers_DAO{
 
             userLog.info("Select user by username query executed!");
 
+            Users user = new Users();
             while (queryResult.next()) {
-                Integer id = queryResult.getInt("user_id");
-                String password = queryResult.getString("user_pass");
-                String firstname = queryResult.getString("user_first_name");
-                String lastname = queryResult.getString("user_last_name");
-                String useremail = queryResult.getString("user_email");
-                Integer role = queryResult.getInt("user_role_id");
-                user = new Users(id, username, password, firstname, lastname, useremail, role);
-                return user;
+                user.setUser_ID(queryResult.getInt("user_id"));
+                user.setUser_Name(queryResult.getString("user_name"));
+                user.setUser_Pass(queryResult.getString("user_pass"));
+                user.setUser_First_Name(queryResult.getString("user_first_name"));
+                user.setUser_Last_Name(queryResult.getString("user_last_name"));
+                user.setUser_Email(queryResult.getString("user_email"));
+                user.setUser_Role_ID(queryResult.getInt("user_role_id"));
             }
-
+            return user;
         } catch (SQLException e) {
             e.printStackTrace();
             userLog.debug("Select user role by username Failure!");
