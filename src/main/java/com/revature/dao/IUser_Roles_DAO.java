@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IUser_Roles_DAO {
 
-    User_Roles selectUserRoleByUserID(int id);
+    String selectUserRoleByUserID(int id);
 
 //    List<User_Roles> selectAllUserRolls();
 

@@ -22,6 +22,11 @@ public class Users_DAO_IMP implements IUsers_DAO{
 //    }
 
     @Override
+    public List<Users> selectAllUsers() {
+        return null;
+    }
+
+    @Override
     public Users selectUserByUsername(String username) {
         try (Connection myConnect = DB_Connector.getConnection()){
             String sql = "SELECT * FROM users where user_name = ?;";
@@ -78,13 +83,49 @@ public class Users_DAO_IMP implements IUsers_DAO{
         return null; 
     }
 
-//    @Override
-//    public boolean insert(Users Users) {
-//        return false;
-//    }
-//
-//    @Override
-//    public boolean update(Users Users) {
-//        return false;
-//    }
+    @Override
+    public boolean insert(Users users) {
+        try (Connection myConnect = DB_Connector.getConnection()){
+            PreparedStatement ps = myConnect.prepareStatement(
+                    "INSERT into users (user_name, user_pass, user_first_name," +
+                            " user_last_name, user_email, user_role_id) values (?,?,?,?,?,?);");
+
+            ps.setString(1, users.getUser_Name());
+            ps.setString(2, users.getUser_Pass());
+            ps.setString(3, users.getUser_First_Name());
+            ps.setString(4, users.getUser_Last_Name());
+            ps.setString(5, users.getUser_Email());
+            ps.setInt(6,users.getUser_Role_ID());
+            ps.execute();
+            return true;
+
+    }catch(SQLException e){
+            e.printStackTrace();
+            userLog.debug("Insert User failed!!");
+        }
+        return false;
+    }
+
+    @Override
+    public boolean update(Users users) {
+        try (Connection myConnect = DB_Connector.getConnection()){
+            PreparedStatement ps = myConnect.prepareStatement(
+                    "UPDATE users  set user_name = ?, user_pass = ?, user_first_name = ?," +
+                            " user_last_name = ?, user_email = ?, user_role_id = ? where user_id = ?");
+
+            ps.setString(1, users.getUser_Name());
+            ps.setString(2, users.getUser_Pass());
+            ps.setString(3, users.getUser_First_Name());
+            ps.setString(4, users.getUser_Last_Name());
+            ps.setString(5, users.getUser_Email());
+            ps.setInt(6,users.getUser_Role_ID());
+            ps.setInt(7, users.getUser_ID());
+            ps.execute();
+            return true;
+
+        }catch(SQLException e){
+            e.printStackTrace();
+            userLog.debug("Insert User failed!!");
+        }
+        return false;    }
 }
