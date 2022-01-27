@@ -35,7 +35,22 @@ public class Reimbursement_DAO_IMPTest {
 
     //Test general select reimbursement by id
     @Test
-    void selectReimbursement_By_ID(){
-        assertEquals(reimbursement, reimbursementDAO.select_Reimbursement_By_ID(reimbursement.getReimbursement_ID()));
+    void select_Reimbursement_By_ID(){
+        assertEquals(reimbursement, reimbursementDAO.select_Reimbursement_By_ID(reimbursement.getReimbursement_ID()));}
+
+    @Test
+    void select_All_Reimbursements_By_Author_ID(){
+        assertNotEquals(null,reimbursementDAO.select_All_Reimbursements_By_Author_ID(reimbursement.getAuthor_ID()));
     }
+
+    @Test
+    void select_All_Reimbursements(){
+        assertNotEquals(null, reimbursementDAO.select_All_Reimbursements());
+    }
+
+    @Test
+    void select_All_Reimbursement_By_Status_ID(){
+        assertNotEquals(null, reimbursementDAO.select_All_Reimbursement_By_Status_ID(reimbursement.getStatus_ID()));
+    }
+
 }
