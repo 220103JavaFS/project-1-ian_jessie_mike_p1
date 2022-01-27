@@ -7,6 +7,11 @@ public class User_Roles {
     private Integer user_Role_ID;
     private String user_Role;
 
+    public User_Roles() {
+    }
+    public User_Roles(int i, String employee) {
+    }
+
     public Integer getUser_Role_ID() {
         return user_Role_ID;
     }

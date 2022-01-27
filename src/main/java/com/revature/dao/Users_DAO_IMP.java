@@ -12,7 +12,7 @@ public class Users_DAO_IMP implements IUsers_DAO{
     }
 
     @Override
-    public Users selectUserByUsername(String username) {
+    public List<Users> selectUsersByUsername(String username) {
         return null;
     }
 
@@ -23,7 +23,7 @@ public class Users_DAO_IMP implements IUsers_DAO{
 
     @Override
     public boolean insert(Users Users) {
-    return false;
+        return false;
     }
 
     @Override
