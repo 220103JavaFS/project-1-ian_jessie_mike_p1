@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
 
+    //from ian - why are our dependencies laid out like this? Do they work any different?
 
     implementation 'io.javalin:javalin:4.3.0'
     implementation 'org.postgresql:postgresql:42.3.1'
