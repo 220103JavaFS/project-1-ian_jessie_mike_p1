@@ -12,8 +12,6 @@ public class Encryptor {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         md.update(pass.getBytes());
         byte[] hashedPassword = md.digest(pass.getBytes(StandardCharsets.UTF_8));
-//        String hash = new String(hashedPassword, StandardCharsets.UTF_8);
         return String.format("%040x", new BigInteger(1,hashedPassword));
-//        return hash;
     }
 }
