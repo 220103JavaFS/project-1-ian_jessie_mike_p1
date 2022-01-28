@@ -1,4 +1,6 @@
 package com.revature;
+import com.revature.controller.Controller;
+import com.revature.controller.Login_Controller;
 import io.javalin.Javalin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,17 +19,16 @@ public class Application{
         mylog.info("Application starting");
 
         //Create Http server
-        app = Javalin.create(javalinConfig -> {
-
-
-
-        });
-//        configure();
+        //Create Http server
+        app = Javalin.create();
+        configure(new Login_Controller());
         app.start(6000);
     }
+
 //
-//    private static void configure(Controller... controllers){
-//        for(Controller c: controllers){
-//            c.addRoutes(app);
-//        }
+    private static void configure(Controller... controllers) {
+        for (Controller c : controllers) {
+            c.addRoutes(app);
+        }
     }
+}
