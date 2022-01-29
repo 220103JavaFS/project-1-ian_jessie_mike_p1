@@ -10,38 +10,151 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class Reimbursement_DAO_IMP implements IReimbursement_DAO{
 
-//    private static final Logger reimbursementLog = LoggerFactory.getLogger(Application.class);
+    private static final Logger reimbursementLog = LoggerFactory.getLogger(Reimbursement_DAO_IMP.class);
+
 
 
     @Override
     public List<Reimbursement> select_All_Reimbursements() {
-        List<Reimbursement> reimbursements = new ArrayList<>();
+        List<Reimbursement> reimbursementList = new ArrayList<>();
 
-        return reimbursements;
+        //Create connection and perform select query
+        try{
+            Connection myConnect = DB_Connector.getConnection();
+            PreparedStatement ps = myConnect.prepareStatement(
+                    "SELECT * from reimbursement");
+
+            //Get results from query and construct Reimbursement list
+            ResultSet queryResult = ps.executeQuery();
+            while(queryResult.next()){
+
+                Integer reID = queryResult.getInt("reimbursement_id");
+                float amount = queryResult.getFloat("reimbursement_amount");
+                Timestamp timesubmitted = queryResult.getTimestamp("time_submitted");
+                Timestamp timeresolved = queryResult.getTimestamp("time_resolved");
+                String description = queryResult.getString("description");
+                byte[] reciept = queryResult.getBytes("reciept");
+                Integer authorID = queryResult.getInt("author_id");
+                Integer resolverID = queryResult.getInt("resolver_id");
+                Integer statusID = queryResult.getInt("status_id");
+                Integer typeID = queryResult.getInt("type_id");
+
+                //create new reimbursement and add to the reimbursement list
+                Reimbursement reimbursement = new Reimbursement(reID ,amount, timesubmitted,timeresolved,description,
+                        reciept,authorID,resolverID,statusID, typeID);
+                reimbursementList.add(reimbursement);
+            }
+
+
+        }catch(SQLException e){
+            e.printStackTrace();
+            reimbursementLog.debug("Select All Reimbursements failed!!!");
+
+        }
+        return reimbursementList;
     }
 
     @Override
-    public List<Reimbursement> select_All_Reimbursements_By_User_ID(int id) {
-        return null;
+    public List<Reimbursement> select_All_Reimbursements_By_Author_ID(Integer id) {
+
+        List<Reimbursement> reimbursementList = new ArrayList<>();
+
+        //Create connection and perform select query
+        try{
+            Connection myConnect = DB_Connector.getConnection();
+            PreparedStatement ps = myConnect.prepareStatement(
+                    "SELECT * from reimbursement where author_id = ?");
+            ps.setInt(1, id);
+
+            //Get results from query and construct Reimbursement list
+            ResultSet queryResult = ps.executeQuery();
+            while(queryResult.next()){
+
+                Integer reID = queryResult.getInt("reimbursement_id");
+                float amount = queryResult.getFloat("reimbursement_amount");
+                Timestamp timesubmitted = queryResult.getTimestamp("time_submitted");
+                Timestamp timeresolved = queryResult.getTimestamp("time_resolved");
+                String description = queryResult.getString("description");
+                byte[] reciept = queryResult.getBytes("reciept");
+                Integer authorID = queryResult.getInt("author_id");
+                Integer resolverID = queryResult.getInt("resolver_id");
+                Integer statusID = queryResult.getInt("status_id");
+                Integer typeID = queryResult.getInt("type_id");
+
+                //create new reimbursement and add to the reimbursement list
+                Reimbursement reimbursement = new Reimbursement(reID ,amount, timesubmitted,timeresolved,description,
+                        reciept,authorID,resolverID,statusID, typeID);
+                reimbursementList.add(reimbursement);
+            }
+
+
+        }catch(SQLException e){
+            e.printStackTrace();
+            reimbursementLog.debug("Select All Reimbursements by Author ID failed!!!");
+
+        }
+        return reimbursementList;
     }
 
     @Override
-    public List<Reimbursement> select_Reimbursement_By_Status_ID(int status_ID) {
-        return null;
+    public List<Reimbursement> select_All_Reimbursement_By_Status_ID(int status_ID) {
+        List<Reimbursement> reimbursementList = new ArrayList<>();
+
+        //Create connection and perform select query
+        try{
+            Connection myConnect = DB_Connector.getConnection();
+            PreparedStatement ps = myConnect.prepareStatement(
+                    "SELECT * from reimbursement where status_id = ?");
+            ps.setInt(1, status_ID);
+
+            //Get results from query and construct Reimbursement list
+            ResultSet queryResult = ps.executeQuery();
+            while(queryResult.next()){
+
+                Integer reID = queryResult.getInt("reimbursement_id");
+                float amount = queryResult.getFloat("reimbursement_amount");
+                Timestamp timesubmitted = queryResult.getTimestamp("time_submitted");
+                Timestamp timeresolved = queryResult.getTimestamp("time_resolved");
+                String description = queryResult.getString("description");
+                byte[] reciept = queryResult.getBytes("reciept");
+                Integer authorID = queryResult.getInt("author_id");
+                Integer resolverID = queryResult.getInt("resolver_id");
+                Integer statusID = queryResult.getInt("status_id");
+                Integer typeID = queryResult.getInt("type_id");
+
+                //create new reimbursement and add to the reimbursement list
+                Reimbursement reimbursement = new Reimbursement(reID ,amount, timesubmitted,timeresolved,description,
+                        reciept,authorID,resolverID,statusID, typeID);
+                reimbursementList.add(reimbursement);
+            }
+
+
+        }catch(SQLException e){
+            e.printStackTrace();
+            reimbursementLog.debug("Select All Reimbursements by Status ID failed!!!");
+
+        }
+        return reimbursementList;
+
+
     }
 
     @Override
     public Reimbursement select_Reimbursement_By_ID(Integer id) {
         Reimbursement reimbursement = null;
 
+        //Get DB connection and execute prepared statement
         try{
             Connection myConnect = DB_Connector.getConnection();
             PreparedStatement ps = myConnect.prepareStatement(
                     "SELECT reimbursement_amount, time_submitted, time_resolved, description, reciept, author_id, resolver_id, status_id, type_id from reimbursement where reimbursement_id = ?");
             ps.setInt(1,id);
             ResultSet queryResult = ps.executeQuery();
+
+            //Increment result set row and get data
             queryResult.next();
                 float amount = queryResult.getFloat("reimbursement_amount");
                 Timestamp timesubmitted = queryResult.getTimestamp("time_submitted");
@@ -53,12 +166,14 @@ public class Reimbursement_DAO_IMP implements IReimbursement_DAO{
                 Integer statusID = queryResult.getInt("status_id");
                 Integer typeID = queryResult.getInt("type_id");
 
+                //Construct reimbursement and return it
                 reimbursement = new Reimbursement( id,amount, timesubmitted,timeresolved,description,
                         reciept,authorID,resolverID,statusID, typeID);
                 return reimbursement;
 
         }catch(SQLException e){
             e.printStackTrace();
+            reimbursementLog.debug("Select Reimbursement By ID Failure!");
 
         }
 
@@ -91,7 +206,7 @@ public class Reimbursement_DAO_IMP implements IReimbursement_DAO{
 
         } catch (SQLException e) {
             e.printStackTrace();
-//            reimbursementLog.info("Reimbursement insert failed");
+            reimbursementLog.debug("Reimbursement insert failed");
         }
         return updated;
     }
@@ -124,7 +239,7 @@ public class Reimbursement_DAO_IMP implements IReimbursement_DAO{
 
             }catch(SQLException e){
                 e.printStackTrace();
-                System.out.println("Reimbursement update failed");
+                reimbursementLog.debug("Update Reimbursement Failure!");
             }
 
             return false;

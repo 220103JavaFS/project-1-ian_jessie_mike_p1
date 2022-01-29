@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface IUser_Roles_DAO {
 
-    User_Roles selectUserRoleByUserID(int id);
+    String selectUserRoleByUserID(int id);
 
 //    List<User_Roles> selectAllUserRolls();
 
-    boolean insertUserRole(User_Roles user_roles);
+//    boolean insertUserRole(User_Roles user_roles);
 
 
 //    boolean updateUserRole(User_Roles user_roles);

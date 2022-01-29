@@ -1,12 +1,11 @@
 package com.revature.dao;
 
 import com.revature.models.Reimbursement;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.sql.Timestamp;
 
-public class Reimbursement_DAO_IMPTest {
+public class reimbursementDAOIMPTest {
 
 
     private static String resolveTime="2018-09-01 09:01:15";
@@ -23,19 +22,34 @@ public class Reimbursement_DAO_IMPTest {
 
     //Test general reimbursement creation
     @Test
-    void createReimbursement(){
+    void createReimbursementTest(){
         assertTrue(reimbursementDAO.insert(reimbursement));
     }
 
     //Test general reimbursement update
     @Test
-    void updateReimbursement(){
+    void updateReimbursementTest(){
         assertTrue(reimbursementDAO.update(reimbursement));
     }
 
     //Test general select reimbursement by id
     @Test
-    void selectReimbursement_By_ID(){
-        assertEquals(reimbursement, reimbursementDAO.select_Reimbursement_By_ID(reimbursement.getReimbursement_ID()));
+    void selectReimbursementByIDTest(){
+        assertEquals(reimbursement, reimbursementDAO.select_Reimbursement_By_ID(reimbursement.getReimbursement_ID()));}
+
+    @Test
+    void selectAllReimbursementsByAuthorIDTest(){
+        assertNotEquals(null,reimbursementDAO.select_All_Reimbursements_By_Author_ID(reimbursement.getAuthor_ID()));
     }
+
+    @Test
+    void selectAllReimbursementsTest(){
+        assertNotEquals(null, reimbursementDAO.select_All_Reimbursements());
+    }
+
+    @Test
+    void selectAllReimbursementByStatusIDTest(){
+        assertNotEquals(null, reimbursementDAO.select_All_Reimbursement_By_Status_ID(reimbursement.getStatus_ID()));
+    }
+
 }

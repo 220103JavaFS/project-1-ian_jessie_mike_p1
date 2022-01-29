@@ -12,14 +12,10 @@ public interface IReimbursement_DAO {
 
 
     //Admin view of all single users reimbursements
-    List<Reimbursement> select_All_Reimbursements_By_User_ID(int id);
-
-    //List<Reimbursement> select_Reimbursement_By_Author(Users users);
-
-    //List<Reimbursement> select_Reimbursement_By_Resolver(Users users);
+    List<Reimbursement> select_All_Reimbursements_By_Author_ID(Integer id);
 
     //Filter by status
-    List<Reimbursement> select_Reimbursement_By_Status_ID(int status_ID);
+    List<Reimbursement> select_All_Reimbursement_By_Status_ID(int status_ID);
 
     Reimbursement select_Reimbursement_By_ID(Integer id);
 
@@ -31,4 +27,7 @@ public interface IReimbursement_DAO {
 
    // boolean delete(Reimbursement reimbursement);
 
+    //List<Reimbursement> select_Reimbursement_By_Author(Users users);
+
+    //List<Reimbursement> select_Reimbursement_By_Resolver(Users users);
 }

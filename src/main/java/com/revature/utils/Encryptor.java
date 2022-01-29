@@ -1,6 +1,7 @@
 package com.revature.utils;
 
 
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -11,8 +12,6 @@ public class Encryptor {
         MessageDigest md = MessageDigest.getInstance("SHA-256");
         md.update(pass.getBytes());
         byte[] hashedPassword = md.digest(pass.getBytes(StandardCharsets.UTF_8));
-        String hash = new String(hashedPassword, StandardCharsets.UTF_8);
-        return hash;
+        return String.format("%040x", new BigInteger(1,hashedPassword));
     }
-
 }
