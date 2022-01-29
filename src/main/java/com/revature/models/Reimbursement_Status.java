@@ -7,6 +7,14 @@ public class Reimbursement_Status {
     private Integer status_ID;
     private String status;
 
+    public Reimbursement_Status() {
+    }
+
+    public Reimbursement_Status(Integer status_ID, String status) {
+        this.status_ID = status_ID;
+        this.status = status;
+    }
+
     public Integer getStatus_ID() {
         return status_ID;
     }

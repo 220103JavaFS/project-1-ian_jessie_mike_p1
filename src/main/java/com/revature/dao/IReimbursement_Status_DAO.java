@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IReimbursement_Status_DAO {
 
-    Reimbursement_Status selectReimbursementStatusByID(int id);
+    String selectReimbursementStatusByID(int id);
 
 //    List<Reimbursement_Status> selectAllReimbursementStatus();
 

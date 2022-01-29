@@ -7,6 +7,14 @@ public class Reimbursement_Type {
     private Integer type_ID;
     private String reimbursement_Type;
 
+    public Reimbursement_Type() {
+    }
+
+    public Reimbursement_Type(Integer type_ID, String reimbursement_Type) {
+        this.type_ID = type_ID;
+        this.reimbursement_Type = reimbursement_Type;
+    }
+
     public Integer getType_ID() {
         return type_ID;
     }
