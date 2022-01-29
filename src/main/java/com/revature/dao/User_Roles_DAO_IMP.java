@@ -28,8 +28,7 @@ public class User_Roles_DAO_IMP implements IUser_Roles_DAO{
             ps.setInt(1, id);
             ResultSet queryResult = ps.executeQuery();
             queryResult.next();
-            String role = queryResult.getString("user_role");
-            return role;
+            return queryResult.getString("user_role");
 
         } catch (SQLException e){
             e.printStackTrace();
