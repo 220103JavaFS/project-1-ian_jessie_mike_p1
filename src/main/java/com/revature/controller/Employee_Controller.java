@@ -1,6 +1,6 @@
 package com.revature.controller;
 
-import com.revature.service.Employee_Service;
+import com.revature.service.ReimbursementService;
 import com.revature.service.UserService;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
@@ -8,7 +8,7 @@ import io.javalin.http.Handler;
 public class Employee_Controller extends Controller{
 
     private final UserService userService = new UserService();
-    Employee_Service employeeService = new Employee_Service();
+    private final ReimbursementService reimbursementService = new ReimbursementService();
 
     Handler viewPastTickets = (ctx) -> {};
 
