@@ -2,6 +2,7 @@ package com.revature.controller;
 
 import com.revature.dao.Users_DAO_IMP;
 import com.revature.models.Users;
+import com.revature.service.UserRoleService;
 import com.revature.service.UserService;
 import com.revature.utils.Encryptor;
 import io.javalin.Javalin;
@@ -13,29 +14,39 @@ import org.slf4j.LoggerFactory;
 
 public class Login_Controller extends Controller{
 
+    private final UserService userService = new UserService();
     private final LoginService loginService= new LoginService();
-//    private final UserService userService = new UserService();
-    private static final Logger loginControllerLog = LoggerFactory.getLogger(LoginService.class);
+    private final UserRoleService userRoleService = new UserRoleService();
+    private static final Logger loginControllerLog = LoggerFactory.getLogger(Login_Controller.class);
 
 
     private Handler login = ctx -> {
         Users user = ctx.bodyAsClass(Users.class);
+
+        //check if users credentials are valid
         if (loginService.userLogin(user.getUser_Name(),user.getUser_Pass())) {
             loginControllerLog.info("New User Logged in!!!");
-            ctx.req.getSession();
-            ctx.status(200);
 
-            /*
-            Code for storing user role in httpSession data for route protection
-            Users loginUser = userService.selectUserByUsername(user.getUser_Name());
+            //Storing user role in httpSession data for route protection
+            Users loguser = userService.selectUserByUsername(user.getUser_Name());
+            String role = userRoleService.SelectUserRoleByRoleID(loguser.getUser_Role_ID());
             ctx.req.getSession();
-            ctx.req.getSession().setAttribute("user_role",loginUser.getUser_Role_ID());
-            ctx.status(200);*/
+            ctx.req.getSession().setAttribute("user_role",role);
+            ctx.req.getSession().setAttribute("user_id", loguser.getUser_ID());
+
+            //check whether user is employee or manager and redirect them to their respective homepage
+            if(role.equals("employee")){
+                ctx.redirect("/employee/"+loguser.getUser_ID(), 200);
+            }else{
+                //route not built yet
+                ctx.redirect("/manager/"+loguser.getUser_ID(), 200);
+            }
+            //else credentials are invalid log incident and inform user
         } else {
             ctx.req.getSession().invalidate();
             ctx.json("Username or password incorrect!!!");
             loginControllerLog.info("User Login Failed!!!");
-            ctx.status(401);
+            ctx.status(404);
         }
     };
 

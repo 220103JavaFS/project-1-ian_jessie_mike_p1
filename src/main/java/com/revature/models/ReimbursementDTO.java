@@ -5,16 +5,26 @@ import java.util.Objects;
 public class ReimbursementDTO {
 
     private Reimbursement request;
-    private Reimbursement_Status status;
-    private Reimbursement_Type type;
+    private String status;
+    private String type;
+    private Users user;
 
     public ReimbursementDTO() {
     }
 
-    public ReimbursementDTO(Reimbursement request, Reimbursement_Status status, Reimbursement_Type type) {
+    public ReimbursementDTO(Reimbursement request, String status, String type, Users user) {
         this.request = request;
         this.status = status;
         this.type = type;
+        this.user = user;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
     }
 
     public Reimbursement getRequest() {
@@ -25,19 +35,19 @@ public class ReimbursementDTO {
         this.request = request;
     }
 
-    public Reimbursement_Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Reimbursement_Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
-    public Reimbursement_Type getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(Reimbursement_Type type) {
+    public void setType(String type) {
         this.type = type;
     }
 
