@@ -22,8 +22,7 @@ public class LoginService {
     public LoginService(){encryptor = new Encryptor(); user = new Users_DAO_IMP();}
 
     public boolean userLogin(String username, String password) throws NoSuchAlgorithmException {
-
-        //Retreive user attempting to login
+        //Retrieve user attempting to log in
         Users secureUser = user.selectUserByUsername(username);
 
         //If User exists proceed, else return false and log incident
@@ -35,12 +34,11 @@ public class LoginService {
                 loginLog.info("User " + secureUser.getUser_Name() + " has logged in successfully!");
                 return true;
             }else {
-                System.out.println("Password didnt match");
                 loginLog.info("User " + secureUser.getUser_Name() + " login has failed!");
                 return false;
             }
         }else{
-            loginLog.error("User with no credentials attempted login");
+            loginLog.info("User with no credentials attempted login");
             return false;
         }
     }

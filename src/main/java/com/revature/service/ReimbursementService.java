@@ -2,13 +2,16 @@ package com.revature.service;
 
 import com.revature.dao.IReimbursement_DAO;
 import com.revature.dao.Reimbursement_DAO_IMP;
+import com.revature.dao.Users_DAO_IMP;
 import com.revature.models.Reimbursement;
 
 import java.util.List;
 
 public class ReimbursementService {
 
-    private final IReimbursement_DAO serviceReimbursement;
+    private static IReimbursement_DAO serviceReimbursement;
+
+    public ReimbursementService(IReimbursement_DAO serviceReimbursement){ReimbursementService.serviceReimbursement = serviceReimbursement;}
 
     public ReimbursementService(){serviceReimbursement = new Reimbursement_DAO_IMP();}
 

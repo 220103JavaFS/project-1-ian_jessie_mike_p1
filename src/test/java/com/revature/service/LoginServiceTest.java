@@ -32,7 +32,7 @@ public class LoginServiceTest {
         testUser.setUser_Name("SuperRandomMan");
         testUser.setUser_Pass(encryptor.encoder("ItThatShallNotBeGuessed"));
         testUser.setUser_Email("rando@anywhere.com");
-        testUser.setUser_Role_ID(77);
+        testUser.setUser_Role_ID(1);
 
         //Tells Mockito to scan for any Mock objects
         MockitoAnnotations.openMocks(this);

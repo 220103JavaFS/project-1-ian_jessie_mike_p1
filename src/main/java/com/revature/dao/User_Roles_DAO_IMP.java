@@ -18,18 +18,17 @@ public class User_Roles_DAO_IMP implements IUser_Roles_DAO{
     private static final Logger userRoleLog = LoggerFactory.getLogger(User_Roles_DAO_IMP.class);
 
     @Override
-    public String selectUserRoleByUserID(int id) {
+    public String selectUserRoleByRoleID(int id) {
 
         //Get DB connection and execute prepared statement
         try (Connection myConnect = DB_Connector.getConnection()){
-            String sql = "SELECT user_role_id from users where user_id = ?;";
+            String sql = "SELECT * from user_roles where user_role_id = ?;";
             PreparedStatement ps = myConnect.prepareStatement(sql);
 
             ps.setInt(1, id);
             ResultSet queryResult = ps.executeQuery();
             queryResult.next();
-            String role = queryResult.getString("user_role");
-            return role;
+            return queryResult.getString("user_role");
 
         } catch (SQLException e){
             e.printStackTrace();

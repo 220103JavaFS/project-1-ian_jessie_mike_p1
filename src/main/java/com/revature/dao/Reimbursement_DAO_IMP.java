@@ -33,8 +33,8 @@ public class Reimbursement_DAO_IMP implements IReimbursement_DAO{
 
                 Integer reID = queryResult.getInt("reimbursement_id");
                 float amount = queryResult.getFloat("reimbursement_amount");
-                Timestamp timesubmitted = queryResult.getTimestamp("time_submitted");
-                Timestamp timeresolved = queryResult.getTimestamp("time_resolved");
+                String timesubmitted = queryResult.getString("time_submitted");
+                String timeresolved = queryResult.getString("time_resolved");
                 String description = queryResult.getString("description");
                 byte[] reciept = queryResult.getBytes("reciept");
                 Integer authorID = queryResult.getInt("author_id");
@@ -75,8 +75,8 @@ public class Reimbursement_DAO_IMP implements IReimbursement_DAO{
 
                 Integer reID = queryResult.getInt("reimbursement_id");
                 float amount = queryResult.getFloat("reimbursement_amount");
-                Timestamp timesubmitted = queryResult.getTimestamp("time_submitted");
-                Timestamp timeresolved = queryResult.getTimestamp("time_resolved");
+                String timesubmitted = queryResult.getString("time_submitted");
+                String timeresolved = queryResult.getString("time_resolved");
                 String description = queryResult.getString("description");
                 byte[] reciept = queryResult.getBytes("reciept");
                 Integer authorID = queryResult.getInt("author_id");
@@ -116,8 +116,8 @@ public class Reimbursement_DAO_IMP implements IReimbursement_DAO{
 
                 Integer reID = queryResult.getInt("reimbursement_id");
                 float amount = queryResult.getFloat("reimbursement_amount");
-                Timestamp timesubmitted = queryResult.getTimestamp("time_submitted");
-                Timestamp timeresolved = queryResult.getTimestamp("time_resolved");
+                String timesubmitted = queryResult.getString("time_submitted");
+                String timeresolved = queryResult.getString("time_resolved");
                 String description = queryResult.getString("description");
                 byte[] reciept = queryResult.getBytes("reciept");
                 Integer authorID = queryResult.getInt("author_id");
@@ -157,8 +157,8 @@ public class Reimbursement_DAO_IMP implements IReimbursement_DAO{
             //Increment result set row and get data
             queryResult.next();
                 float amount = queryResult.getFloat("reimbursement_amount");
-                Timestamp timesubmitted = queryResult.getTimestamp("time_submitted");
-                Timestamp timeresolved = queryResult.getTimestamp("time_resolved");
+                String timesubmitted = queryResult.getString("time_submitted");
+                String timeresolved = queryResult.getString("time_resolved");
                 String description = queryResult.getString("description");
                 byte[] reciept = queryResult.getBytes("reciept");
                 Integer authorID = queryResult.getInt("author_id");
@@ -190,17 +190,16 @@ public class Reimbursement_DAO_IMP implements IReimbursement_DAO{
             Connection myConnect = DB_Connector.getConnection();
             PreparedStatement ps = myConnect.prepareStatement(
                     "INSERT into reimbursement (reimbursement_Amount, time_Submitted," +
-                            " time_Resolved, description, reciept, author_ID, resolver_ID, status_ID, type_ID) values (?,?,?,?,?,?,?,?,?)");
+                            " time_Resolved, description, reciept, author_ID, status_ID, type_ID) values (?,?,?,?,?,?,?,?)");
 
             ps.setFloat(1, reimbursement.getReimbursement_Amount());
-            ps.setTimestamp(2, reimbursement.getTime_Submitted());
-            ps.setTimestamp(3, reimbursement.getTime_Resolved());
+            ps.setString(2, reimbursement.getTime_Submitted());
+            ps.setString(3, reimbursement.getTime_Resolved());
             ps.setString(4, reimbursement.getDescription());
             ps.setBytes(5, reimbursement.getReciept());
             ps.setInt(6, reimbursement.getAuthor_ID());
-            ps.setInt(7, reimbursement.getResolver_ID());
-            ps.setInt(8, reimbursement.getStatus_ID());
-            ps.setInt(9, reimbursement.getType_ID());
+            ps.setInt(7, reimbursement.getStatus_ID());
+            ps.setInt(8, reimbursement.getType_ID());
             ps.execute();
             updated = true;
 
@@ -224,8 +223,8 @@ public class Reimbursement_DAO_IMP implements IReimbursement_DAO{
                                 "where reimbursement_id = ?");
 
                 ps.setFloat(1, reimbursement.getReimbursement_Amount());
-                ps.setTimestamp(2, reimbursement.getTime_Submitted());
-                ps.setTimestamp(3, reimbursement.getTime_Resolved());
+                ps.setString(2, reimbursement.getTime_Submitted());
+                ps.setString(3, reimbursement.getTime_Resolved());
                 ps.setString(4, reimbursement.getDescription());
                 ps.setBytes(5, reimbursement.getReciept());
                 ps.setInt(6, reimbursement.getAuthor_ID());

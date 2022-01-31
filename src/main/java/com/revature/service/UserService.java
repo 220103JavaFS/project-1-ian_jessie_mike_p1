@@ -23,8 +23,9 @@ public class UserService {
         return matcher.find();
     }
 
-    private final IUsers_DAO users_dao;
+    private static IUsers_DAO users_dao;
 
+    public UserService(IUsers_DAO users_dao){UserService.users_dao = users_dao;};
     public UserService(){users_dao = new Users_DAO_IMP();}
 
     public Users selectUserByUsername(String username){return users_dao.selectUserByUsername(username);}
