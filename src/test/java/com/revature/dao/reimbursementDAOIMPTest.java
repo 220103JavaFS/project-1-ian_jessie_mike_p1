@@ -18,7 +18,7 @@ public class reimbursementDAOIMPTest {
 
 
     private static Reimbursement reimbursement = new Reimbursement(
-            1,3.50F, timestamp, timestamp2, "Practice Description", null,1,1,1,1);
+            1,3.50F, authorTime,resolveTime, "Practice Description", null,1,1,1,1);
 
     //Test general reimbursement creation
     @Test

@@ -17,11 +17,11 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UserServiceTest {
 
     private UserService testInstance;
+    private Encryptor encryptor = new Encryptor();
 
     @Mock
     private Users_DAO_IMP mockedDAO;
     private Users testUser = new Users();
-    private Encryptor encryptor = new Encryptor();
 
     @BeforeEach
     public void setUp() throws NoSuchAlgorithmException {
@@ -30,7 +30,7 @@ public class UserServiceTest {
         testUser.setUser_First_Name("random");
         testUser.setUser_Last_Name("man");
         testUser.setUser_Name("SuperRandomMan");
-        testUser.setUser_Pass(encryptor.encoder("ItThatShallNotBeGuessed"));
+        testUser.setUser_Pass("ItThatShallNotBeGuessed");
         testUser.setUser_Email("rando@anywhere.com");
         testUser.setUser_Role_ID(1);
 

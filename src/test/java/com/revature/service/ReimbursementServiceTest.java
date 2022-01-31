@@ -19,7 +19,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class ReimbursementServiceTest {
     private ReimbursementService testInstance;
-
+    private static String resolveTime="2018-09-01 09:01:15";
+    private static String authorTime = "2017-09-01 09:01:15";
     @Mock
     private Reimbursement_DAO_IMP mockedDAO;
     private Reimbursement testReimbursement = new Reimbursement();
@@ -32,8 +33,8 @@ public class ReimbursementServiceTest {
 
         testReimbursement.setReimbursement_ID(10);
         testReimbursement.setReimbursement_Amount(100.00F);
-        testReimbursement.setTime_Submitted(time);
-        testReimbursement.setTime_Resolved(time);
+        testReimbursement.setTime_Submitted(authorTime);
+        testReimbursement.setTime_Resolved(resolveTime);
         testReimbursement.setDescription("The flight was too long");
         testReimbursement.setAuthor_ID(3);
         testReimbursement.setResolver_ID(6);
