@@ -20,9 +20,9 @@ public class reimbursementTypeDAOIMPTest {
     private static IReimbursement_Type_DAO reimbursement_type_dao = new Reimbursement_Type_DAO_IMP();
 
     private static Reimbursement reimbursement = new Reimbursement(
-            1,3.50F, timestamp, timestamp2, "Practice Description", null,1,1,1,1);
+            1,3.50F, authorTime, resolveTime, "Practice Description", null,1,1,1,1);
     private static Reimbursement reimbursement2 = new Reimbursement(
-            2,3.50F, timestamp, timestamp2, "Practice Description", null,1,1,1,2);
+            2,3.50F, authorTime, resolveTime, "Practice Description", null,1,1,1,2);
     private static Reimbursement_Type reimbursement_type = new Reimbursement_Type(1,"lodging");
 
     @Test

@@ -17,12 +17,12 @@ public class userRolesDAOIMPTest {
 
     @Test
     void selectEmployeeRoleByIDTest() {
-        assertEquals(employeeRole.getUser_Role(), userRolesDAO.selectUserRoleByUserID(user.getUser_ID()));
+        assertEquals(employeeRole.getUser_Role(), userRolesDAO.selectUserRoleByRoleID(user.getUser_ID()));
     }
 
     @Test
     void selectManagerRoleByIDTest(){
-        assertEquals(managerRole.getUser_Role(), userRolesDAO.selectUserRoleByUserID(user2.getUser_ID()));
+        assertEquals(managerRole.getUser_Role(), userRolesDAO.selectUserRoleByRoleID(user2.getUser_ID()));
     }
 
     //bad user must be added to db to function

@@ -20,9 +20,9 @@ public class reimbursementStatusDAOIMPTest {
     private static IReimbursement_Status_DAO reimbursement_status_dao = new Reimbursement_Status_DAO_IMP();
 
     private static Reimbursement reimbursement = new Reimbursement(
-            1,3.50F, timestamp, timestamp2, "Practice Description", null,1,1,1,1);
+            1,3.50F, authorTime, resolveTime, "Practice Description", null,1,1,1,1);
     private static Reimbursement reimbursement2 = new Reimbursement(
-            2,3.50F, timestamp, timestamp2, "Practice Description", null,1,1,2,2);
+            2,3.50F, authorTime, resolveTime, "Practice Description", null,1,1,2,2);
     private static Reimbursement_Status reimbursement_status = new Reimbursement_Status(1,"pending");
 
     @Test

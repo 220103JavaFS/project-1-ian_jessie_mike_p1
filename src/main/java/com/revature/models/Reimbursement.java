@@ -8,8 +8,8 @@ public class Reimbursement {
 
     private Integer reimbursement_ID;
     private Float reimbursement_Amount;
-    private Timestamp time_Submitted;
-    private Timestamp time_Resolved;
+    private String time_Submitted;
+    private String time_Resolved;
     private String description;
     private byte[] reciept;
     private Integer author_ID;
@@ -20,7 +20,7 @@ public class Reimbursement {
     public Reimbursement() {
     }
 
-    public Reimbursement(Integer reimbursement_ID, Float reimbursement_Amount, Timestamp time_Submitted, Timestamp time_Resolved, String description, byte[] reciept, Integer author_ID, Integer resolver_ID, Integer status_ID, Integer type_ID) {
+    public Reimbursement(Integer reimbursement_ID, Float reimbursement_Amount, String time_Submitted, String time_Resolved, String description, byte[] reciept, Integer author_ID, Integer resolver_ID, Integer status_ID, Integer type_ID) {
         this.reimbursement_ID = reimbursement_ID;
         this.reimbursement_Amount = reimbursement_Amount;
         this.time_Submitted = time_Submitted;
@@ -47,19 +47,19 @@ public class Reimbursement {
 
     public void setReimbursement_Amount(Float reimbursement_Amount) {this.reimbursement_Amount = reimbursement_Amount;}
 
-    public Timestamp getTime_Submitted() {
+    public String getTime_Submitted() {
         return time_Submitted;
     }
 
-    public void setTime_Submitted(Timestamp time_Submitted) {
+    public void setTime_Submitted(String time_Submitted) {
         this.time_Submitted = time_Submitted;
     }
 
-    public Timestamp getTime_Resolved() {
+    public String getTime_Resolved() {
         return time_Resolved;
     }
 
-    public void setTime_Resolved(Timestamp time_Resolved) {
+    public void setTime_Resolved(String time_Resolved) {
         this.time_Resolved = time_Resolved;
     }
 
