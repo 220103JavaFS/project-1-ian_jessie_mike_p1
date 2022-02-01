@@ -5,11 +5,7 @@ import com.revature.models.Reimbursement_Type;
 import java.util.List;
 
 public interface IReimbursement_Type_DAO {
-<<<<<<< HEAD
 
-    Reimbursement_Type selectReimbursementTypeByID(int id);
-=======
->>>>>>> main
 
     String selectReimbursementTypeByID(int id);
 
