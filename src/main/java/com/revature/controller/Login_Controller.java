@@ -1,10 +1,8 @@
 package com.revature.controller;
 
-import com.revature.dao.Users_DAO_IMP;
 import com.revature.models.Users;
 import com.revature.service.UserRoleService;
 import com.revature.service.UserService;
-import com.revature.utils.Encryptor;
 import io.javalin.Javalin;
 import io.javalin.http.Handler;
 import com.revature.service.LoginService;
@@ -33,12 +31,20 @@ public class Login_Controller extends Controller{
             ctx.req.getSession();
             ctx.req.getSession().setAttribute("user_role",role);
             ctx.req.getSession().setAttribute("user_id", loguser.getUser_ID());
+            ctx.req.getSession().setAttribute("user_role_id", loguser.getUser_Role_ID());
+            //get role ID so it is return in response for JS verification
+            Integer roleID = (Integer) ctx.req.getSession().getAttribute("user_role_id");
+
+
 
             //check whether user is employee or manager and redirect them to their respective homepage
             if(role.equals("employee")){
+                ctx.json(roleID);
                 ctx.redirect("/employee/"+loguser.getUser_ID(), 200);
+
             }else{
                 //route not built yet
+                ctx.json(roleID);
                 ctx.redirect("/manager/"+loguser.getUser_ID(), 200);
             }
             //else credentials are invalid log incident and inform user

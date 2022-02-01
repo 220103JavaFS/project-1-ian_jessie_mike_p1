@@ -33,10 +33,10 @@ public class Registration_Controller extends Controller{
 
             //check whether user is employee or manager and redirect them to their respective homepage
             if(role.equals("employee")){
-                ctx.redirect("/employee/"+user.getUser_ID(), 200);
+                ctx.redirect("/employee/"+user.getUser_ID(), 201);
             }else{
                 //route not built yet
-                ctx.redirect("/manager/"+user.getUser_ID(), 200);
+                ctx.redirect("/manager/"+user.getUser_ID(), 201);
             }
         }else{
             RegistrationControllerLog.info("New User Registration Failed!!!");
