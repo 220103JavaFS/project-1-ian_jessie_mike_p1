@@ -18,6 +18,8 @@ public interface IReimbursement_DAO {
 
     Reimbursement select_Reimbursement_By_ID(Integer id);
 
+    List<Reimbursement> select_All_Pending_Reimbursements();
+
     //Add reimbursement request
     boolean insert(Reimbursement reimbursement);
 

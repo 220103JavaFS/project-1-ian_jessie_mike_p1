@@ -1,8 +1,5 @@
 package com.revature;
-import com.revature.controller.Controller;
-import com.revature.controller.Employee_Controller;
-import com.revature.controller.Login_Controller;
-import com.revature.controller.Registration_Controller;
+import com.revature.controller.*;
 import io.javalin.Javalin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +20,7 @@ public class Application{
         //Create Http server
         //Create Http server
         app = Javalin.create();
-        configure(new Login_Controller(), new Registration_Controller(), new Employee_Controller());
+        configure(new Login_Controller(), new Registration_Controller(), new Employee_Controller(), new Finance_Manager_Controller());
         app.start(6000);
     }
 

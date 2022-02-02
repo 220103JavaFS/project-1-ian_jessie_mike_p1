@@ -33,8 +33,11 @@ public class Employee_Controller extends Controller {
             Users thisUser = userService.selectUserByID(sessionID);
             ctx.json(thisUser);
             ctx.status(200);
+
             employeeControllerLog.info("Employee " + thisUser.getUser_First_Name() + " " +
                     thisUser.getUser_Last_Name() + " is visiting their homepage");
+
+
             //Session validation
         }else {
             employeeControllerLog.info("Employee with invalid session is attempting to visit the homepage");
@@ -47,6 +50,7 @@ public class Employee_Controller extends Controller {
     //RESOLVER ID
     private Handler submitRequest = ctx -> {
         if (ctx.req.getSession(false) != null) {
+            //Get reimbursement from req and insert
             Reimbursement reimbursement = ctx.bodyAsClass(Reimbursement.class);
             //REIMBURSEMENT SERVICE NEEDS INPUT VALIDATION
             if (reimbursementService.insertReimbursement(reimbursement)) {
@@ -66,9 +70,13 @@ public class Employee_Controller extends Controller {
 
     private Handler viewPastTickets = ctx -> {
         if(ctx.req.getSession(false) != null && ctx.req.getSession().getAttribute("user_role").equals("employee")) {
+
+            //Get userID session attribute and build list
             Integer id = (Integer) ctx.req.getSession().getAttribute("user_id");
             List<ReimbursementDTO> dtoList = new ArrayList<>();
             List<Reimbursement> reimbursementList = reimbursementService.selectAllReimbursementsByAuthorID(id);
+
+            //Build reimbursementDTO and send
             for(int i = 0; i <reimbursementList.size(); i++){
                 Users author = userService.selectUserByID(reimbursementList.get(i).getAuthor_ID());
                 String status = reimbursementStatusService.selectReimbursementStatusByID(reimbursementList.get(i).getStatus_ID());
@@ -76,8 +84,11 @@ public class Employee_Controller extends Controller {
                 ReimbursementDTO reimbursementDTO = new ReimbursementDTO(reimbursementList.get(i),status,type,author);
                 dtoList.add(reimbursementDTO);
             }
+
             ctx.json(dtoList);
             ctx.status(200);
+
+        //Session validation
         }else{
             ctx.json("Session is invalid!!");
             ctx.redirect("/login", 401);
@@ -86,7 +97,7 @@ public class Employee_Controller extends Controller {
 
     @Override
     public void addRoutes(Javalin app) {
-        app.get("/employee/home",employeeHome);
+        app.get("/employee/home/",employeeHome);
         app.get("/employee/tickets", viewPastTickets);
         app.post("/employee/submit",submitRequest);
     }
