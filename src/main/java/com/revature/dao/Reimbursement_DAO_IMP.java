@@ -58,6 +58,48 @@ public class Reimbursement_DAO_IMP implements IReimbursement_DAO{
     }
 
     @Override
+    public List<Reimbursement> select_All_Pending_Reimbursements(){
+
+        List<Reimbursement> reimbursementList = new ArrayList<>();
+
+        //Create connection and perform select query
+        try{
+            Connection myConnect = DB_Connector.getConnection();
+            PreparedStatement ps = myConnect.prepareStatement(
+                    "SELECT * from reimbursement where resolver_id is null;");
+
+            //Get results from query and construct Reimbursement list
+            ResultSet queryResult = ps.executeQuery();
+            while(queryResult.next()){
+
+                Integer reID = queryResult.getInt("reimbursement_id");
+                float amount = queryResult.getFloat("reimbursement_amount");
+                String timesubmitted = queryResult.getString("time_submitted");
+                String timeresolved = queryResult.getString("time_resolved");
+                String description = queryResult.getString("description");
+                byte[] reciept = queryResult.getBytes("reciept");
+                Integer authorID = queryResult.getInt("author_id");
+                Integer resolverID = queryResult.getInt("resolver_id");
+                Integer statusID = queryResult.getInt("status_id");
+                Integer typeID = queryResult.getInt("type_id");
+
+                //create new reimbursement and add to the reimbursement list
+                Reimbursement reimbursement = new Reimbursement(reID ,amount, timesubmitted,timeresolved,description,
+                        reciept,authorID,resolverID,statusID, typeID);
+                reimbursementList.add(reimbursement);
+            }
+
+        //else return query exception
+        }catch(SQLException e){
+            e.printStackTrace();
+            reimbursementLog.debug("Select All Reimbursements failed!!!");
+
+        }
+        return reimbursementList;
+
+    }
+
+    @Override
     public List<Reimbursement> select_All_Reimbursements_By_Author_ID(Integer id) {
 
         List<Reimbursement> reimbursementList = new ArrayList<>();
