@@ -52,6 +52,7 @@ public class Login_Controller extends Controller{
 
     @Override
     public void addRoutes(Javalin app) {
-       app.post("/login", login);
+
+        app.post("/login", login);
     }
 }
