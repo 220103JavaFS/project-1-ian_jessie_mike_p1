@@ -1,7 +1,7 @@
 var selectBtn = document.getElementById('typeSelect');
 var submitBtn = document.getElementById('submitBtn');
 submitBtn.addEventListener('click', submitRequest);
-const url = 'http://localhost:7000/';
+const url = 'http://localhost:8080/';
 
 //submitting new reimburs request
 async function submitRequest() {

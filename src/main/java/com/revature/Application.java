@@ -24,7 +24,7 @@ public class Application{
         });
 
         configure(new Login_Controller(), new Registration_Controller(), new Employee_Controller(), new Finance_Manager_Controller());
-        app.start(7000);
+        app.start();
 
     }
 

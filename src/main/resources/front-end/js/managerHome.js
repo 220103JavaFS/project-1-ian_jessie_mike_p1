@@ -1,7 +1,7 @@
 var selectBtn = document.getElementById('filterSelect');
 var signoutLink = document.getElementById('signout');
 let requestTbl = document.getElementById('tixTable');
-const url = 'http://localhost:7000/';
+const url = 'http://localhost:8080/';
 
 signoutLink.addEventListener('click', signout);
 selectBtn.addEventListener('click', selectTicketOpt);
@@ -59,7 +59,7 @@ async function getApproved() {
 }
 
 //returns all denied reimbursments
-async function getDenied(ti) {
+async function getDenied() {
   console.log('running get denied');
   let response = await fetch(url + 'manager/reimbursements/filter/denied', {
     credentials: 'include',
@@ -124,7 +124,16 @@ async function displayRequests(Tickets) {
     timeResData.innerText = request.time_Resolved;
     typeData.innerText = type;
     statusData.innerText = status;
+if (status == 'pending') {
+      //create buttons to attach to pending requests
+      let approveBtn = document.createElement('button');
+      approveBtn.innerText = 'Approve';
+      let denyBtn = document.createElement('button');
+      denyBtn.innerText = 'Deny';
 
+      statusData.appendChild(approveBtn);
+      statusData.appendChild(denyBtn);
+    }
     //appends all to row
     row.appendChild(idData);
     row.appendChild(firstNameData);

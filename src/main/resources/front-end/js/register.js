@@ -5,7 +5,7 @@ const selectBtn = document.getElementById('roleSelect');
 //eventListeners
 registerBtn.addEventListener('click', registerUser);
 
-const url = 'http://localhost:7000/';
+const url = 'http://localhost:8080/';
 
 async function registerUser() {
   var selectValue = selectBtn.value;
