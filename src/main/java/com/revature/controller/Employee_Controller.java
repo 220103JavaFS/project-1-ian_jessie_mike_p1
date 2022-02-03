@@ -53,6 +53,9 @@ public class Employee_Controller extends Controller {
             //Get reimbursement from req and insert
             Reimbursement reimbursement = ctx.bodyAsClass(Reimbursement.class);
             //REIMBURSEMENT SERVICE NEEDS INPUT VALIDATION
+            Integer sessionID = (Integer) ctx.req.getSession().getAttribute("user_id");
+            reimbursement.setAuthor_ID(sessionID);
+            reimbursement.setStatus_ID(1);
             if (reimbursementService.insertReimbursement(reimbursement)) {
                 ctx.json(reimbursement);
                 ctx.status(200);
@@ -66,7 +69,6 @@ public class Employee_Controller extends Controller {
             ctx.redirect("/login", 401);
         }
     };
-
 
     private Handler viewPastTickets = ctx -> {
         if(ctx.req.getSession(false) != null && ctx.req.getSession().getAttribute("user_role").equals("employee")) {
