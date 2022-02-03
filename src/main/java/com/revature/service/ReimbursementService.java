@@ -9,15 +9,34 @@ import java.util.List;
 
 public class ReimbursementService {
 
+    private final Integer MINIMUM_REIMBURSEMENT_AMOUNT = 0;
+    private final Integer MINIMUM_DESCRIPTION_LENGTH = 3;
+
+
+
     private static IReimbursement_DAO serviceReimbursement;
 
     public ReimbursementService(IReimbursement_DAO serviceReimbursement){ReimbursementService.serviceReimbursement = serviceReimbursement;}
 
     public ReimbursementService(){serviceReimbursement = new Reimbursement_DAO_IMP();}
 
-    public boolean insertReimbursement(Reimbursement newReimbursement){return serviceReimbursement.insert(newReimbursement);}
+    public boolean insertReimbursement(Reimbursement newReimbursement){
+        if (newReimbursement.getReimbursement_Amount() > MINIMUM_REIMBURSEMENT_AMOUNT &&
+                newReimbursement.getDescription().length() >= MINIMUM_DESCRIPTION_LENGTH){
+            return serviceReimbursement.insert(newReimbursement);
+        }else{
+            return false;
+        }
+    }
 
-    public boolean updateReimbursement(Reimbursement newReimbursement){return serviceReimbursement.update(newReimbursement);}
+    public boolean updateReimbursement(Reimbursement newReimbursement){
+        if (newReimbursement.getReimbursement_Amount() > MINIMUM_REIMBURSEMENT_AMOUNT &&
+                newReimbursement.getDescription().length() >= MINIMUM_DESCRIPTION_LENGTH){
+            return serviceReimbursement.insert(newReimbursement);
+        }else{
+            return false;
+        }
+    }
 
     public Reimbursement selectReimbursementByID(Integer id){return serviceReimbursement.select_Reimbursement_By_ID(id);}
 
