@@ -18,12 +18,8 @@ public class Application{
 
         mylog.info("Application starting");
 
-        //Create Http server
-        //Create Http server
-
-
         app = Javalin.create((config)->{
-            config.addStaticFiles("C:\\Users\\jessi\\Desktop\\Revature\\p1_html_css_js",
+            config.addStaticFiles("src/main/resources/front-end",
                     Location.EXTERNAL);
         });
 

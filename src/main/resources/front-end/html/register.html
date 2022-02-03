@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Employee Reimbursment App</title>
+</head>
+<body class="bg-secondary">
+    <!-- Header -->
+    <div class="container bg-success text-light mw-100 p-4 mb-5">
+        <h1 class="text-center display-1">ERS APP</h1>
+    </div>
+    <!-- register form -->
+    <div class="row justify-content-center mw-100">
+        <form class="w-50 bg-light">  
+            <div class="form-group my-5 row justify-content-center">
+                <label for="inputUserName" class="col-sm-3 col-form-label form-control-lg">Username</label>
+                <input type="text" class="form-control border border-success w-50" id="inputUserName" placeholder="Username">
+            </div>
+            <div class="form-group my-5 row justify-content-center">
+                <label for="inputPassword" class="col-sm-3 col-form-label form-control-lg">Password</label>
+                <input type="password" class="form-control border border-success w-50" id="inputPassword"
+                    placeholder="Password">
+            </div>
+            <div class="form-group my-5 row justify-content-center">
+                <label for="inputFirstName" class="col-sm-3 col-form-label form-control-lg">First Name</label>
+                <input type="text" class="form-control border border-success w-50" id="inputFirstName"
+                    placeholder="First Name">
+            </div>
+            <div class="form-group my-5 row justify-content-center">
+                <label for="inputLastName" class="col-sm-3 col-form-label form-control-lg">Last Name</label>
+                <input type="text" class="form-control border border-success w-50" id="inputLastName" placeholder="Last Name">
+            </div>
+            <div class="form-group my-5 row justify-content-center">
+                <label for="inputEmail1" class="col-sm-3 col-form-label form-control-lg">Email address</label>
+                <input type="email" class="form-control border border-success w-50" id="inputEmail" aria-describedby="emailHelp"
+                    placeholder="Enter email">
+            </div>
+            <!-- select role option -->
+            <div class="d-flex justify-content-center">
+                <label for="roleSelect" class="col-sm-3 col-form-label form-control-lg">Select Role</label>
+                <select onchange="" class="form-control w-50 bg-success text-light text-center" id="roleSelect">
+                    <option id="noOpt" class="bg-secondary text-light" value="">Select</option>
+                    <option id="employeeOpt" class="bg-secondary text-light" value="Employee">Employee</option>
+                    <option id="managerOpt" class="bg-secondary text-light" value="Manager">Finance Manager</option>
+                </select>
+            </div>
+            <!-- register button -->
+            <div class="text-center my-5">
+                <button  class="btn btn-success btn-lg" id="registerBtn" type="button">Register</button>
+                <p class="mt-3 text-primary text-decoration-underline"><a href="/html/login.html">Already registered? Login</a></p>
+            </div>
+        </form>
+    </div>
+    <script src='/js/register.js'></script>
+</body>
+</html>
