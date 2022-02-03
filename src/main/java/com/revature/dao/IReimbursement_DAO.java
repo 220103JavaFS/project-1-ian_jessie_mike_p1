@@ -10,6 +10,7 @@ public interface IReimbursement_DAO {
     //view all reimbursements
     List<Reimbursement> select_All_Reimbursements();
 
+
     //Admin view of all single users reimbursements
     List<Reimbursement> select_All_Reimbursements_By_Author_ID(Integer id);
 
@@ -26,7 +27,7 @@ public interface IReimbursement_DAO {
     //approve deny reimbursement requests
     boolean update(Reimbursement reimbursement);
 
-    //boolean delete(Reimbursement reimbursement);
+   // boolean delete(Reimbursement reimbursement);
 
     //List<Reimbursement> select_Reimbursement_By_Author(Users users);
 

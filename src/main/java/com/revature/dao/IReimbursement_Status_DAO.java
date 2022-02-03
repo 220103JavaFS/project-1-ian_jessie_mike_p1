@@ -14,6 +14,8 @@ public interface IReimbursement_Status_DAO {
 
 //    boolean updateReimbursementStatus(Reimbursement_Status reimbursement_status);
 
-//    boolean deleteReimbursementStatus(Reimbursement_Status reimbursement_status);
+
+    //boolean deleteReimbursementStatus(Reimbursement_Status reimbursement_status);
+
 
 }

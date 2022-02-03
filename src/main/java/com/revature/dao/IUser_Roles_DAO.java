@@ -12,8 +12,10 @@ public interface IUser_Roles_DAO {
 
 //    boolean insertUserRole(User_Roles user_roles);
 
+
 //    boolean updateUserRole(User_Roles user_roles);
 //
 //    boolean deleteUserRole(User_Roles user_roles);
+
 
 }

@@ -1,6 +1,7 @@
 package com.revature;
 import com.revature.controller.*;
 import io.javalin.Javalin;
+import io.javalin.http.staticfiles.Location;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,9 +20,16 @@ public class Application{
 
         //Create Http server
         //Create Http server
-        app = Javalin.create();
+
+
+        app = Javalin.create((config)->{
+            config.addStaticFiles("C:\\Users\\jessi\\Desktop\\Revature\\p1_html_css_js",
+                    Location.EXTERNAL);
+        });
+
         configure(new Login_Controller(), new Registration_Controller(), new Employee_Controller(), new Finance_Manager_Controller());
-        app.start(6000);
+        app.start(7000);
+
     }
 
 //
