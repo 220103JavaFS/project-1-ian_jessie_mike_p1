@@ -27,4 +27,6 @@ public class ReimbursementService {
 
     public List<Reimbursement> selectAllReimbursementByStatusID(Integer id){return serviceReimbursement.select_All_Reimbursement_By_Status_ID(id);}
 
+    public List<Reimbursement> selectAllPendingReimbursements(){return serviceReimbursement.select_All_Pending_Reimbursements();}
+
 }

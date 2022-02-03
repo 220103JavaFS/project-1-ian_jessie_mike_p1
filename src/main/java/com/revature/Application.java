@@ -21,6 +21,7 @@ public class Application{
         //Create Http server
         //Create Http server
 
+
         app = Javalin.create((config)->{
             config.addStaticFiles("C:\\Users\\jessi\\Desktop\\Revature\\p1_html_css_js",
                     Location.EXTERNAL);
