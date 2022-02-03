@@ -3,7 +3,7 @@ let newTicketBtn = document.getElementById('newTicketBtn');
 let signoutLink = document.getElementById('signout');
 let requestTbl = document.getElementById('tixTable');
 
-const url = 'http://localhost:7000/';
+const url = 'http://localhost:8080/';
 
 viewTicketBtn.addEventListener('click', viewMyTickets);
 newTicketBtn.addEventListener('click', createTicket);

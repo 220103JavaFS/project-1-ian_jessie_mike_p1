@@ -1,5 +1,5 @@
 let loginBtn = document.getElementById('loginBtn');
-const url = 'http://localhost:7000/';
+const url = 'http://localhost:8080/';
 
 loginBtn.addEventListener('onclick', loginUser);
 
