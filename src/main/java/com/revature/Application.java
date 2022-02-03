@@ -1,8 +1,5 @@
 package com.revature;
-import com.revature.controller.Controller;
-import com.revature.controller.Employee_Controller;
-import com.revature.controller.Login_Controller;
-import com.revature.controller.Registration_Controller;
+import com.revature.controller.*;
 import io.javalin.Javalin;
 import io.javalin.http.staticfiles.Location;
 import org.slf4j.Logger;
@@ -29,7 +26,7 @@ public class Application{
                     Location.EXTERNAL);
         });
 
-        configure(new Login_Controller(), new Registration_Controller(), new Employee_Controller());
+        configure(new Login_Controller(), new Registration_Controller(), new Employee_Controller(), new Finance_Manager_Controller());
         app.start(7000);
 
     }
