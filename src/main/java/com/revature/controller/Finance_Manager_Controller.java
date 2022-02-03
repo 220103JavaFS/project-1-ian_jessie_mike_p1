@@ -92,14 +92,14 @@ public class Finance_Manager_Controller extends Controller{
             //Get reimbursement status applied from path
             String status = ctx.pathParam("status");
             List<ReimbursementDTO> dtoList = new ArrayList<>();
-            List<Reimbursement> reimbursementList;
+            List<Reimbursement> reimbursementList = null;
 
             //select based on status
             if(status.equals("pending")) {
                 reimbursementList = reimbursementService.selectAllPendingReimbursements();
             }else if(status.equals("approved")){
                 reimbursementList = reimbursementService.selectAllReimbursementByStatusID(2);
-            }else{
+            }else if(status.equals("denied")){
                 reimbursementList = reimbursementService.selectAllReimbursementByStatusID(3);
 
             }
