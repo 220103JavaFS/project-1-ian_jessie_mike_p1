@@ -23,6 +23,12 @@ public class Application{
                     Location.EXTERNAL);
         });
 
+            //run from local machine
+//        app = Javalin.create((config)->{
+//            config.addStaticFiles("C:\\Users\\jessi\\Desktop\\Revature\\p1_html_css_js",
+//                    Location.EXTERNAL);
+//        });
+
         configure(new Login_Controller(), new Registration_Controller(), new Employee_Controller(), new Finance_Manager_Controller());
         app.start();
     }
