@@ -188,6 +188,6 @@ public class Finance_Manager_Controller extends Controller{
         app.get("/manager/reimbursements/filter/{status}",filterRequestsByPending);
         app.get("/manager/reimbursements/request/{reimbursementID}", viewSingleRequest);
         app.get("/manager/reimbursements/employee/{userID}", viewAllRequestsForEmployee);
-        app.post("/manager/reimbursements/request/{reimbursementID}:{status}", approveDenyRequest);
+        app.put("/manager/reimbursements/request/{reimbursementID}:{status}", approveDenyRequest);
     }
 }

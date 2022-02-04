@@ -115,7 +115,8 @@ async function displayRequests(Tickets) {
     let statusData = document.createElement('td');
 
     //insert each data key into corresponding row and column
-    idData.innerText = request.reimbursement_ID;
+    let reimID = request.reimbursement_ID;
+    idData.innerText = reimID;
     firstNameData.innerText = user.user_First_Name;
     lastNameData.innerText = user.user_Last_Name;
     amountData.innerText = request.reimbursement_Amount;
@@ -124,16 +125,7 @@ async function displayRequests(Tickets) {
     timeResData.innerText = request.time_Resolved;
     typeData.innerText = type;
     statusData.innerText = status;
-if (status == 'pending') {
-      //create buttons to attach to pending requests
-      let approveBtn = document.createElement('button');
-      approveBtn.innerText = 'Approve';
-      let denyBtn = document.createElement('button');
-      denyBtn.innerText = 'Deny';
 
-      statusData.appendChild(approveBtn);
-      statusData.appendChild(denyBtn);
-    }
     //appends all to row
     row.appendChild(idData);
     row.appendChild(firstNameData);
@@ -143,9 +135,54 @@ if (status == 'pending') {
     row.appendChild(timeSubData);
     row.appendChild(timeResData);
     row.appendChild(typeData);
-    row.appendChild(statusData);
+
+    if (status == 'pending') {
+      //create buttons to attach to pending requests
+      let approveBtn = document.createElement('button');
+      approveBtn.innerText = 'Approve';
+      let denyBtn = document.createElement('button');
+      denyBtn.innerText = 'Deny';
+
+      //add buttons to status column
+      statusData.appendChild(approveBtn);
+      statusData.appendChild(denyBtn);
+      row.appendChild(statusData);
+
+      approveBtn.setAttribute('type', 'button');
+      denyBtn.setAttribute('type', 'button');
+      approveBtn.setAttribute('status', status);
+      denyBtn.setAttribute('status', status);
+      approveBtn.setAttribute('id', reimID);
+      denyBtn.setAttribute('id', reimID);
+
+      //update request status by button
+      approveBtn.addEventListener('click', function () {
+        updateStatus(reimID, 'approved');
+      });
+      denyBtn.addEventListener('click', function () {
+        updateStatus(reimID, 'denied');
+      });
+    } else if (status != 'pending') {
+      row.appendChild(statusData);
+    }
 
     //add to table body
     requestTbl.appendChild(row);
+  }
+}
+
+async function updateStatus(reimID, status) {
+  let response = await fetch(
+    url + 'manager/reimbursements/request/' + reimID + ':' + status,
+    {
+      method: 'PUT',
+      credentials: 'include',
+    }
+  );
+  if (response.status === 200) {
+    document.location.reload();
+    console.log('Okay' + response.status);
+  } else {
+    console.log('Error Status:' + response.status);
   }
 }
